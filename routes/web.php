@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MainPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+
+Route::post('auth/login', [AuthController::class, 'signInUser'])->name('auth.login');
+Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+//These routes require some middleware authentication
+Route::get('/main-page/main-page', [MainPageController::class, 'getMainPage']);

@@ -18,17 +18,26 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image">
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                    <form>
+                    <form action="{{ route('auth.login') }}" method="post">
+                        @csrf
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="email" id="form1Example13" class="form-control form-control-lg" />
-                            <label class="form-label" for="form1Example13">Email address</label>
+                            <input
+                                type="email"
+                                id="login-email"
+                                name="email"
+                                class="form-control form-control-lg" />
+                            <label class="form-label" for="login-email">Email address</label>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                            <input type="password" id="form1Example23" class="form-control form-control-lg" />
-                            <label class="form-label" for="form1Example23">Password</label>
+                            <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                class="form-control form-control-lg" />
+                            <label class="form-label" for="login-password">Password</label>
                         </div>
 
                         <!-- Submit button -->
