@@ -26,7 +26,8 @@
                                 type="email"
                                 id="login-email"
                                 name="email"
-                                class="form-control form-control-lg" />
+                                class="form-control form-control-lg"
+                                value="{{ old('email') }}"/>
                             <label class="form-label" for="login-email">Email address</label>
                         </div>
 
@@ -39,6 +40,12 @@
                                 class="form-control form-control-lg" />
                             <label class="form-label" for="login-password">Password</label>
                         </div>
+
+                            @if(session()->get('fail'))
+                                <div class="alert-danger mb-3 p-1">
+                                    {{ session()->get('fail') }}
+                                </div>
+                            @endif
 
                         <!-- Submit button -->
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>

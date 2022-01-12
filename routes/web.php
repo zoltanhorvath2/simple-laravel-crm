@@ -16,11 +16,14 @@ use App\Http\Controllers\MainPageController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 
-Route::post('auth/login', [AuthController::class, 'signInUser'])->name('auth.login');
-Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::post('/auth/login', [AuthController::class, 'signInUser'])->name('auth.login');
 
-//These routes require some middleware authentication
-Route::get('/main-page/main-page', [MainPageController::class, 'getMainPage']);
+Route::group(['middleware' => ['auth_check']], function (){
+
+    Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+    Route::get('/main-page/main-page', [MainPageController::class, 'getMainPage']);
+});
