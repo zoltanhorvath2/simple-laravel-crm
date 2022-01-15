@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth_check']], function (){
     Route::prefix('employees')->group(function(){
         Route::get('/list', [EmployeesController::class, 'list'])
             ->name('employees.list');
+        Route::get('/get-employees', [EmployeesController::class, 'getEmployees']);
     });
 
 });

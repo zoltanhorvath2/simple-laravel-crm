@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
-class UsersTableSeeder extends Seeder
+class CompaniesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,11 +15,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'dev',
-            'email' => 'developer@hz.hu',
-            'password' => Hash::make('Demo1234'),
-            'is_admin' => 1,
+        DB::table('companies')->insert([
+            'company_name' => 'Lajoska Kft.',
+            'email' => 'lajoskkft@gmail.com',
+            'logo_url' => 'https://clipground.com/images/gp-logo-2.jpg',
+            'website_url' => 'www.lajoskakft.hu',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

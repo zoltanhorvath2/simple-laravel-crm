@@ -7,8 +7,22 @@
         </div>
     </div>
     <div class="card-body">
-        <div>
-            <h2>Alkalmazottak</h2>
-        </div>
+        <table id="employees_table" class="display">
+            <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Vezetéknév</th>
+                <th>Keresztnév</th>
+                <th>Cégnév</th>
+                <th>Email-cím</th>
+                <th>Telefonszám</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
     </div>
 @endsection
