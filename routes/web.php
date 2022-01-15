@@ -29,8 +29,8 @@ Route::group(['middleware' => ['auth_check']], function (){
 
     //Employee routes
 
-    Route::group(['prefix' => 'employees'], function(){
-        Route::resource('list', UsersController::class);
+    Route::prefix('employees')->group(function(){
+        Route::get('/list', [UsersController::class, 'list']);
     });
 
 });
