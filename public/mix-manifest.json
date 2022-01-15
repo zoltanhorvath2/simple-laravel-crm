@@ -1,4 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/vendor/plugins/jquery/jquery.min.js": "/vendor/plugins/jquery/jquery.min.js",
+    "/vendor/plugins/bootstrap/js/bootstrap.bundle.min.js": "/vendor/plugins/bootstrap/js/bootstrap.bundle.min.js",
+    "/vendor/plugins/fontawesome-free/css/all.min.css": "/vendor/plugins/fontawesome-free/css/all.min.css"
 }
