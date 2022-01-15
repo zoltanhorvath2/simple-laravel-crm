@@ -24,6 +24,13 @@ Route::post('/auth/login', [AuthController::class, 'signInUser'])->name('auth.lo
 Route::group(['middleware' => ['auth_check']], function (){
 
     Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/main-page/main-page', [MainPageController::class, 'getMainPage'])
+        ->name('main-page');
 
-    Route::get('/main-page/main-page', [MainPageController::class, 'getMainPage']);
+    //Employee routes
+
+    Route::group(['prefix' => 'employees'], function(){
+        Route::resource('list', UsersController::class);
+    });
+
 });

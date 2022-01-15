@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                            @yield('content')
+                        @yield('content')
                     </div>
                     <!-- /.card -->
                 </div>
