@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'dev',
             'email' => 'developer@hz.hu',
             'password' => Hash::make('Demo1234'),
+            'is_admin' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

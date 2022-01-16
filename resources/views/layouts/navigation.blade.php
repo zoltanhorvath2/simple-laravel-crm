@@ -53,7 +53,7 @@ to get the desired effect
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('companies.list') }}" class="nav-link">
                                     <i class="fas fa-business-time"></i>
                                     <p>Cégek</p>
                                 </a>

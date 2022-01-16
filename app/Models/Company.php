@@ -2,24 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Company extends Model
 {
     use HasFactory;
 
-    protected $table = 'users';
+    protected $table = 'companies';
 
     protected $fillable = [
         'id',
-        'name',
+        'company_name',
         'email',
-        'password',
-        'is_admin',
+        'logo_url',
+        'website_url',
         'created_at',
         'updated_at'
     ];
@@ -29,4 +26,11 @@ class User extends Authenticatable
     public $incrementing = false;
 
     protected $connection = 'mysql';
+
+
+    public function employee()
+    {
+        return $this->hasMany('App\Models\Employee', 'company_id');
+
+    }
 }
