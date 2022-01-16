@@ -3,7 +3,7 @@
 @section('content')
     <div class="card-header border-0">
         <div class="d-flex justify-content-between">
-            <h3 class="card-title">Alkalmazottak</h3>
+            <h2 class="card-title text-bold">ALKALMAZOTTAK</h2>
         </div>
     </div>
     <div class="card-body">

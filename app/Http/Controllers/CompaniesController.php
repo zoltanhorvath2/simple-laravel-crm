@@ -19,4 +19,12 @@ class CompaniesController extends Controller
 
         return $dataTables->of($companies)->toJson();
     }
+
+    public function newCompany(){
+        return view('companies.newCompany');
+    }
+
+    public function createCompany(Request $request){
+        dd($request->all());
+    }
 }
