@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth_check']], function (){
         Route::post('/add', [CompaniesController::class, 'createCompany'])
             ->name('create-company');
         Route::get('/get-company-names', [CompaniesController::class, 'getCompanyNames']);
+        Route::post('/delete', [CompaniesController::class, 'delete']);
     });
 
 });

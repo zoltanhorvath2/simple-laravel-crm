@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 class MediaController extends Controller
@@ -20,6 +22,22 @@ class MediaController extends Controller
             $resized->save(public_path('assets/logos/'). $this->newLogoName);
         }else{
             return back()->with(['error_message' => 'Hiba! A kép feltöltése sikertelen!']);
+        }
+    }
+
+    public function logoDeleter($requestID){
+        $fileName = Company::select('logo_name')
+            ->where('id', $requestID)
+            ->value('logo_name');
+
+        if(!$fileName){
+            return false;
+        }
+
+        if(File::exists('assets/logos/' . $fileName)){
+            File::delete('assets/logos/' . $fileName);
+        }else{
+            return back()->with(['error_message' => 'Hiba! A képek logo törlése sikertelen!']);
         }
     }
 }

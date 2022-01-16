@@ -50,9 +50,10 @@ class CompaniesController extends Controller
         $company = new Company();
 
         $company->company_name = $request->company_name;
-        $company->email = $request->email;
-        $company->website_url = $request->website_url;
-        $company->logo_url = $logoUrl;
+        $company->email        = $request->email;
+        $company->website_url  = $request->website_url;
+        $company->logo_url     = $logoUrl;
+        $company->logo_name    = $this->media->newLogoName;
 
         $request = $company->save();
 
@@ -81,6 +82,17 @@ class CompaniesController extends Controller
             return response()->json(['response' =>'Nincs találat.']);
         }else{
             return response()->json($results);
+        }
+    }
+
+    public function delete(Request $request){
+        $this->media->logoDeleter($request->id);
+        $deletion = Company::find($request->id)->delete();
+
+        if(!$deletion){
+            return response()->json(['code' => 0, 'msg' => 'A cég törlése sikertelen!']);
+        }else{
+            return response()->json(['code' => 1, 'msg' => 'A cég törölve!']);
         }
     }
 

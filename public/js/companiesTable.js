@@ -54,11 +54,39 @@ $(document).ready( function () {
             style: 'os',
             items: 'row',
         }
-    }).on('draw', function (){
-        $('input[name="company_checkbox"]').each(function (){
-            this.checked = false;
-        });
-        $('input[name="main-checkbox-companies"]').prop('checked', false);
-        $('button#btn-multiple-delete-customers').addClass('d-none');
-    });
+    })
+
+    //Deletion for companies table rows
+
+    $('#companies_table').on('click', '.btn-companies-delete', function (){
+        var companyData = companiesTable.row( $(this).parents('tr') ).data();
+
+        var url = path + 'companies/delete';
+
+        swal.fire({
+            title: 'Biztosan törölni akarja ezt a céget és a hozzá tartozó alkalmazottakat?',
+            html: 'A művelet nem visszavonható.',
+            showCancelButton: true,
+            showCloseButton: true,
+            cancelButtonText: 'Mégsem',
+            confirmButtonText: 'Töröl',
+            cancelButtonColor: 'blue',
+            confirmButtonColor: 'red',
+            width: 300,
+            allowOutsideClick: false
+        }).then(function(result){
+            if(result.value){
+                $.post(url, {id : companyData.id}, function(data){
+                    if(data.code === 1){
+                        $('#companies_table').DataTable().ajax.reload(null, false);
+                        toastr.success(data.msg);
+                    }else{
+                        toastr.error(data.msg);
+                    }
+                }, 'json');
+            }
+        })
+
+    })
+
 } );
