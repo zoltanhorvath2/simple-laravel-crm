@@ -54,7 +54,15 @@ class EmployeesController extends Controller
             return back()->with(['success_message' => 'Az alkalmazott felvitele sikeres volt!']);
         }
 
+    }
 
+    public function delete(Request $request){
+        $deletion = Employee::find($request->id)->delete();
 
+        if(!$deletion){
+            return response()->json(['code' => 0, 'msg' => 'Az alkalmazott törlése sikertelen!']);
+        }else{
+            return response()->json(['code' => 1, 'msg' => 'Az alkalmazott törölve!']);
+        }
     }
 }

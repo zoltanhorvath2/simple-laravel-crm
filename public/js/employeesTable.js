@@ -18,8 +18,8 @@ $(document).ready( function () {
                 "data": null,
                 "defaultContent":
                     "<div class='centered-button-container'>" +
-                    "<button class='btn btn-primary btn-customers-edit mr-1'><i class='far fa-eye'></i></button>" +
-                    "<button class='btn btn-danger btn-customers-delete'><i class='far fa-trash-alt'></i></button>" +
+                    "<button class='btn btn-primary btn-employees-edit mr-1'><i class='far fa-eye'></i></button>" +
+                    "<button class='btn btn-danger btn-employees-delete'><i class='far fa-trash-alt'></i></button>" +
                     "</div>",
                 'orderable' : false,
                 'searchable' : false
@@ -50,13 +50,7 @@ $(document).ready( function () {
             style: 'os',
             items: 'row',
         }
-    }).on('draw', function (){
-        $('input[name="employee_checkbox"]').each(function (){
-            this.checked = false;
-        });
-        $('input[name="main-checkbox-employees"]').prop('checked', false);
-        $('button#btn-multiple-delete-customers').addClass('d-none');
-    });
+    })
 
     //AUTOCOMPLETE FIELD
 
@@ -73,6 +67,39 @@ $(document).ready( function () {
     }).focus(function () {
         $(this).autocomplete('search', "")
     });
+
+    //Deletion for companies table rows
+
+    $('#employees_table').on('click', '.btn-employees-delete', function (){
+        var employeeData = employeesTable.row( $(this).parents('tr') ).data();
+
+        var url = path + 'employees/delete';
+
+        swal.fire({
+            title: 'Biztosan törölni akarja ezt az alkalmazottat?',
+            html: 'A művelet nem visszavonható.',
+            showCancelButton: true,
+            showCloseButton: true,
+            cancelButtonText: 'Mégsem',
+            confirmButtonText: 'Töröl',
+            cancelButtonColor: 'blue',
+            confirmButtonColor: 'red',
+            width: 300,
+            allowOutsideClick: false
+        }).then(function(result){
+            if(result.value){
+                $.post(url, {id : employeeData.id}, function(data){
+                    if(data.code === 1){
+                        $('#employees_table').DataTable().ajax.reload(null, false);
+                        toastr.success(data.msg);
+                    }else{
+                        toastr.error(data.msg);
+                    }
+                }, 'json');
+            }
+        })
+
+    })
 
 
 

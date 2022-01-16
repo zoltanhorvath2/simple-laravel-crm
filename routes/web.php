@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth_check']], function (){
             ->name('new-employee');
         Route::post('/add', [EmployeesController::class, 'createEmployee'])
             ->name('create-employee');
+        Route::post('/delete', [EmployeesController::class, 'delete']);
     });
 
     //Company routes
