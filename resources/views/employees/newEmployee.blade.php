@@ -12,6 +12,7 @@
     <div class="card-body">
         <form action="{{ route('create-employee') }}"
               method="post"
+              class="form-to-submit"
               id="new-employee-form">
             @csrf
             <div class="container">
@@ -60,6 +61,7 @@
                             type="text"
                             name="company_name"
                             id="company_name"
+                            placeholder="Kattintson a szövegdobozba és kezdjen gépelni!"
                             value="{{ old('company_name') }}">
                     </div>
                     <div class="form-group">
@@ -80,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 offset-2 d-flex justify-content-center">
-                    <button class="btn btn-success">Létrehozás</button>
+                    <button class="btn btn-success btn-submit">Létrehozás</button>
                 </div>
 
             </div>

@@ -141,9 +141,36 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'company_name' => [
+            'required' => 'Cégnév megadása kötelező!',
+            'min' => 'A cégnév minimum két karakter hosszú lehet!',
+            'max' => 'A cégnév maximum 200 karakter hosszú lehet!'
         ],
+        'email' => [
+            'email' => 'Kérjük érvényes emailcímet adjon meg!'
+        ],
+        'website_url' => [
+            'min' => 'A webcím minimum két karakter hosszú lehet!',
+            'max' => 'A webcím maximum 200 karakter hosszú lehet!'
+        ],
+        'logo' => [
+            'image' => 'Nem megfelelő fájlformátum!',
+            'mimes' => 'Nem megfelelő fájlformátum! (.jpg,.jpeg,.png)'
+        ],
+        'last_name' => [
+            'required' => 'Vezetéknév megadása kötelező!',
+            'min' => 'A vezetéknév minimum egy karakter hosszú lehet!',
+            'max' => 'A vezetéknév maximum 150 karakter hosszú lehet!'
+        ],
+        'first_name' => [
+            'required' => 'Keresztnév megadása kötelező!',
+            'min' => 'A keresztnév minimum egy karakter hosszú lehet!',
+            'max' => 'A keresztnév maximum 150 karakter hosszú lehet!'
+        ],
+        'phone_number' => [
+            'min' => 'A telefonszám minimum egy karakter hosszú lehet!',
+            'max' => 'A telefonszám maximum 150 karakter hosszú lehet!'
+        ]
     ],
 
     /*

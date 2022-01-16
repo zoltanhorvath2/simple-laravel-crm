@@ -13,6 +13,7 @@
         <form action="{{ route('create-company') }}"
               method="post"
               id="new-company-form"
+              class="form-to-submit"
               enctype="multipart/form-data">
             @csrf
             <div class="container">
@@ -71,7 +72,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 offset-2 d-flex justify-content-center">
-                    <button class="btn btn-success">Létrehozás</button>
+                    <button class="btn btn-success btn-submit">Létrehozás</button>
                 </div>
 
             </div>

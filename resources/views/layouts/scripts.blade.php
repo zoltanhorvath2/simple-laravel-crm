@@ -11,6 +11,8 @@
  {{--Jquery Datatables--}}
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
+{{--General scripts--}}
+<script src="{{ url('js/general.js') }}"></script>
 {{--CSRF token--}}
 <script src="{{ url('js/csrf.js') }}"></script>
 {{--Datatable for Employees Entity--}}

@@ -59,7 +59,7 @@ class CompaniesController extends Controller
         $this->media->newLogoName = '';
 
         if(!$request){
-            return back()->with(['error_message' => 'Hiba! a cég felvitele sikertelen!']);
+            return back()->with(['error_message' => 'Hiba! A cég felvitele sikertelen!']);
         }else{
             return back()->with(['success_message' => 'A cég felvitele sikeres volt!']);
         }
