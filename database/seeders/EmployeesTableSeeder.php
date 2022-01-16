@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory;
 
 class EmployeesTableSeeder extends Seeder
 {
@@ -15,14 +16,29 @@ class EmployeesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('employees')->insert([
-            'last_name' => 'Kovács',
-            'first_name' => 'Lajos',
-            'company_id' => 1,
-            'email' => 'kovacslajos@lajoskakft.hu',
-            'phone_number' => '+36303334445',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        $faker = Factory::create();
+
+        for ($i = 0; $i <= 15; $i++) {
+
+            DB::table('employees')->insert([
+                'last_name' => $faker->lastName(),
+                'first_name' => $faker->firstName(),
+                'company_id' => $i + 1,
+                'email' => $faker->companyEmail(),
+                'phone_number' => $faker->phoneNumber(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
+            DB::table('employees')->insert([
+                'last_name' => $faker->lastName(),
+                'first_name' => $faker->firstName(),
+                'company_id' => $i + 1,
+                'email' => $faker->companyEmail(),
+                'phone_number' => $faker->phoneNumber(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
     }
 }

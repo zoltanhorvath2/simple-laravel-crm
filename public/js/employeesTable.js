@@ -20,7 +20,7 @@ $(document).ready( function () {
             { data: 'id', name: 'id'},
             { data: 'last_name', name: 'last_name'},
             { data: 'first_name', name: 'first_name'},
-            { data: 'company_id', name: 'company_id'},
+            { data: 'company_name', name: 'company_name'},
             { data: 'email', name: 'email'},
             { data: 'phone_number', name: 'phone_number'},
             {
