@@ -8,15 +8,6 @@ $(document).ready( function () {
         pagingType: "first_last_numbers",
         ajax:  path + "companies/get-companies",
         columns: [
-            {
-                data: null,
-                defaultContent:
-                    "<div>" +
-                    "<input type='checkbox' name='company_checkbox'>" +
-                    "</div>",
-                orderable : false,
-                searchable : false
-            },
             { data: 'id', name: 'id'},
             { data: 'company_name', name: 'company_name'},
             { data: 'email', name: 'email'},
@@ -24,7 +15,7 @@ $(document).ready( function () {
                 data: 'logo_url',
                 name: 'logo_url',
                 render: function ( data, type, full ) {
-                    return '<img style="width: 30px; height: 30px" src="'+data+'"></>'
+                    return data ? '<img style="width: 30px; height: 30px" src="'+data+'"></>' : ''
                 }
             },
             { data: 'website_url', name: 'website_url'},

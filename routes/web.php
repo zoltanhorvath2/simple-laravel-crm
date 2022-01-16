@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth_check']], function (){
         Route::get('/list', [EmployeesController::class, 'list'])
             ->name('employees.list');
         Route::get('/get-employees', [EmployeesController::class, 'getEmployees']);
+        Route::get('/new', [EmployeesController::class, 'newEmployee'])
+            ->name('new-employee');
+        Route::post('/add', [EmployeesController::class, 'createEmployee'])
+            ->name('create-employee');
     });
 
     //Company routes
@@ -43,6 +47,11 @@ Route::group(['middleware' => ['auth_check']], function (){
         Route::get('/list', [CompaniesController::class, 'list'])
             ->name('companies.list');
         Route::get('/get-companies', [CompaniesController::class, 'getCompanies']);
+        Route::get('/new', [CompaniesController::class, 'newCompany'])
+            ->name('new-company');
+        Route::post('/add', [CompaniesController::class, 'createCompany'])
+            ->name('create-company');
+        Route::get('/get-company-names', [CompaniesController::class, 'getCompanyNames']);
     });
 
 });

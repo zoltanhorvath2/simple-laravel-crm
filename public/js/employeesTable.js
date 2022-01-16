@@ -8,15 +8,6 @@ $(document).ready( function () {
         pagingType: "first_last_numbers",
         ajax:  path + "employees/get-employees",
         columns: [
-            {
-                data: null,
-                defaultContent:
-                    "<div>" +
-                    "<input type='checkbox' name='employee_checkbox'>" +
-                    "</div>",
-                orderable : false,
-                searchable : false
-            },
             { data: 'id', name: 'id'},
             { data: 'last_name', name: 'last_name'},
             { data: 'first_name', name: 'first_name'},
@@ -66,4 +57,25 @@ $(document).ready( function () {
         $('input[name="main-checkbox-employees"]').prop('checked', false);
         $('button#btn-multiple-delete-customers').addClass('d-none');
     });
+
+    //AUTOCOMPLETE FIELD
+
+    path = window.location.href.split('employees')[0];
+
+    let company_name;
+    $( "#company_name" ).autocomplete({
+        source: path + "companies/get-company-names",
+        minLength: 0,
+        select: function( event, ui ) {
+            company_name = ui.item.value;
+            $( "#company_name" ).value = company_name;
+        }
+    }).focus(function () {
+        $(this).autocomplete('search', "")
+    });
+
+
+
+
 } );
+
