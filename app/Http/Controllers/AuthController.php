@@ -13,13 +13,13 @@ class AuthController extends Controller
             ->where('email', '=', $request->email)->first();
 
         if(!$userInfo){
-            return back()->with('fail', 'Please enter correct email!');
+            return back()->with('fail', 'Kérjül valós email-címet adjon meg!');
         }else{
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedInUser', $userInfo->id);
                 return redirect('main-page/main-page');
             }else{
-                return back()->with('fail', 'Please enter correct password.');
+                return back()->with('fail', 'Helytelen jelszó!');
             }
         }
     }

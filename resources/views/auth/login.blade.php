@@ -28,7 +28,7 @@
                                 name="email"
                                 class="form-control form-control-lg"
                                 value="{{ old('email') }}"/>
-                            <label class="form-label" for="login-email">Email address</label>
+                            <label class="form-label" for="login-email">Emai-cím</label>
                         </div>
 
                         <!-- Password input -->
@@ -38,7 +38,7 @@
                                 id="login-password"
                                 name="password"
                                 class="form-control form-control-lg" />
-                            <label class="form-label" for="login-password">Password</label>
+                            <label class="form-label" for="login-password">Jelszó</label>
                         </div>
 
                             @if(session()->get('fail'))
@@ -48,7 +48,7 @@
                             @endif
 
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Belépés</button>
 
                     </form>
                 </div>
