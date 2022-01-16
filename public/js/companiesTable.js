@@ -20,7 +20,13 @@ $(document).ready( function () {
             { data: 'id', name: 'id'},
             { data: 'company_name', name: 'company_name'},
             { data: 'email', name: 'email'},
-            { data: 'logo_url', name: 'logo_url'},
+            {
+                data: 'logo_url',
+                name: 'logo_url',
+                render: function ( data, type, full ) {
+                    return '<img style="width: 30px; height: 30px" src="'+data+'"></>'
+                }
+            },
             { data: 'website_url', name: 'website_url'},
             {
                 "data": null,

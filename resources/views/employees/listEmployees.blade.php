@@ -8,7 +8,7 @@
     </div>
     <div class="card-body">
         <table id="employees_table" class="display" style="width: 100%">
-            <thead style="width: 100%">
+            <thead>
             <tr>
                 <th>
                     <input type="checkbox" name="main-checkbox" id="main-checkbox-employees">
@@ -22,7 +22,7 @@
                 <th></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody style="width: 100%">
             </tbody>
         </table>
 
