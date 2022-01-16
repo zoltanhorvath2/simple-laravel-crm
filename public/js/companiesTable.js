@@ -1,38 +1,36 @@
 $(document).ready( function () {
 
-    let path = window.location.href.split('employees')[0];
+    let path = window.location.href.split('companies')[0];
 
-    let employeesTable = $('#employees_table').DataTable({
+    let companiesTable = $('#companies_table').DataTable({
         processing: true,
         serverSide: true,
         pagingType: "first_last_numbers",
-        ajax:  path + "employees/get-employees",
+        ajax:  path + "companies/get-companies",
         columns: [
             {
                 data: null,
                 defaultContent:
                     "<div>" +
-                    "<input type='checkbox' name='employee_checkbox'>" +
+                    "<input type='checkbox' name='company_checkbox'>" +
                     "</div>",
                 orderable : false,
                 searchable : false
             },
             { data: 'id', name: 'id'},
-            { data: 'last_name', name: 'last_name'},
-            { data: 'first_name', name: 'first_name'},
-            { data: 'company_id', name: 'company_id'},
+            { data: 'company_name', name: 'company_name'},
             { data: 'email', name: 'email'},
-            { data: 'phone_number', name: 'phone_number'},
+            { data: 'logo_url', name: 'logo_url'},
+            { data: 'website_url', name: 'website_url'},
             {
                 "data": null,
                 "defaultContent":
                     "<div class='centered-button-container'>" +
-                    "<button class='btn btn-primary btn-customers-edit mr-1'><i class='far fa-eye'></i></button>" +
-                    "<button class='btn btn-danger btn-customers-delete'><i class='far fa-trash-alt'></i></button>" +
+                    "<button class='btn btn-primary btn-companies-edit mr-1'><i class='far fa-eye'></i></button>" +
+                    "<button class='btn btn-danger btn-companies-delete'><i class='far fa-trash-alt'></i></button>" +
                     "</div>",
                 'orderable' : false,
                 'searchable' : false
-
             }
         ],
         language: {
@@ -60,10 +58,10 @@ $(document).ready( function () {
             items: 'row',
         }
     }).on('draw', function (){
-        $('input[name="employee_checkbox"]').each(function (){
+        $('input[name="company_checkbox"]').each(function (){
             this.checked = false;
         });
-        $('input[name="main-checkbox-employees"]').prop('checked', false);
+        $('input[name="main-checkbox-companies"]').prop('checked', false);
         $('button#btn-multiple-delete-customers').addClass('d-none');
     });
 } );

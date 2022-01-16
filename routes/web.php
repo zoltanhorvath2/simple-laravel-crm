@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\CompaniesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,14 @@ Route::group(['middleware' => ['auth_check']], function (){
         Route::get('/list', [EmployeesController::class, 'list'])
             ->name('employees.list');
         Route::get('/get-employees', [EmployeesController::class, 'getEmployees']);
+    });
+
+    //Company routes
+
+    Route::prefix('companies')->group(function(){
+        Route::get('/list', [CompaniesController::class, 'list'])
+            ->name('companies.list');
+        Route::get('/get-companies', [CompaniesController::class, 'getCompanies']);
     });
 
 });
