@@ -8,15 +8,6 @@ $(document).ready( function () {
         pagingType: "first_last_numbers",
         ajax:  path + "companies/get-companies",
         columns: [
-            {
-                data: null,
-                defaultContent:
-                    "<div>" +
-                    "<input type='checkbox' name='company_checkbox'>" +
-                    "</div>",
-                orderable : false,
-                searchable : false
-            },
             { data: 'id', name: 'id'},
             { data: 'company_name', name: 'company_name'},
             { data: 'email', name: 'email'},

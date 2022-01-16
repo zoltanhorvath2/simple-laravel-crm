@@ -14,9 +14,6 @@
         <table id="employees_table" class="display" style="width: 100%">
             <thead>
             <tr>
-                <th>
-                    <input type="checkbox" name="main-checkbox" id="main-checkbox-employees">
-                </th>
                 <th>ID</th>
                 <th>Vezetéknév</th>
                 <th>Keresztnév</th>

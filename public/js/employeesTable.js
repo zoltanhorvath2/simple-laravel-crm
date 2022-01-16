@@ -8,15 +8,6 @@ $(document).ready( function () {
         pagingType: "first_last_numbers",
         ajax:  path + "employees/get-employees",
         columns: [
-            {
-                data: null,
-                defaultContent:
-                    "<div>" +
-                    "<input type='checkbox' name='employee_checkbox'>" +
-                    "</div>",
-                orderable : false,
-                searchable : false
-            },
             { data: 'id', name: 'id'},
             { data: 'last_name', name: 'last_name'},
             { data: 'first_name', name: 'first_name'},

@@ -14,9 +14,6 @@
         <table id="companies_table" class="display" style="width: 100%">
             <thead>
             <tr>
-                <th>
-                    <input type="checkbox" name="main-checkbox" id="main-checkbox-companies">
-                </th>
                 <th>ID</th>
                 <th>Cégnév</th>
                 <th>Email</th>
