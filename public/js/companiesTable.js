@@ -24,7 +24,7 @@ $(document).ready( function () {
                 data: 'logo_url',
                 name: 'logo_url',
                 render: function ( data, type, full ) {
-                    return '<img style="width: 30px; height: 30px" src="'+data+'"></>'
+                    return data ? '<img style="width: 30px; height: 30px" src="'+data+'"></>' : ''
                 }
             },
             { data: 'website_url', name: 'website_url'},

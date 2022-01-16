@@ -6,7 +6,7 @@
 <script src="{{ url('vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
 <!-- AdminLTE -->
 <script src="{{ url('vendor/adminlte/dist/js/adminlte.js') }}"></script>
- Jquery Datatables
+ {{--Jquery Datatables--}}
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
 {{--CSRF token--}}
@@ -18,4 +18,4 @@
 
 
 </body>
-</html>4
+</html>

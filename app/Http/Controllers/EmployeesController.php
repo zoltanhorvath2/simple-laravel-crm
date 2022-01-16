@@ -22,4 +22,12 @@ class EmployeesController extends Controller
 
         return $dataTables->of($employees)->toJson();
     }
+
+    public function newEmployee(){
+        return view('employees.newEmployee');
+    }
+
+    public function createEmployee(Request $request){
+        dd($request->all());
+    }
 }

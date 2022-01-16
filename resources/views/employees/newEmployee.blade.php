@@ -3,17 +3,16 @@
 @section('content')
     <div class="card-header border-0">
         <div class="d-flex justify-content-between">
-            <h3 class="card-title">Új cég felvétele</h3>
+            <h3 class="card-title">Új alkalmazott felvétele</h3>
         </div>
         <div class="mt-3">
-            <a href="{{ route('companies.list') }}">&leftarrow; Vissza</a>
+            <a href="{{ route('employees.list') }}">&leftarrow; Vissza</a>
         </div>
     </div>
     <div class="card-body">
-        <form action="{{ route('create-company') }}"
+        <form action="{{ route('create-employee') }}"
               method="post"
-              id="new-company-form"
-              enctype="multipart/form-data">
+              id="new-employee-form">
             @csrf
             <div class="container">
 
@@ -39,6 +38,22 @@
 
                 <div class="col-md-8 offset-2">
                     <div class="form-group">
+                        <label for="last_name">Vezetéknév</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="last_name"
+                            value="{{ old('last_name') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">Keresztnév</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            name="first_name"
+                            value="{{ old('first_name') }}">
+                    </div>
+                    <div class="form-group">
                         <label for="company_name">Cégnév</label>
                         <input
                             class="form-control"
@@ -55,19 +70,12 @@
                             value="{{ old('email') }}">
                     </div>
                     <div class="form-group">
-                        <label for="website_url">Weboldal elérhetősége</label>
+                        <label for="phone_number">Telefonszám</label>
                         <input
                             class="form-control"
                             type="text"
-                            name="website_url"
-                            value="{{ old('website_url') }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="logo">Logo</label>
-                        <input
-                            type="file"
-                            name="logo"
-                            value="{{ old('logo') }}">
+                            name="phone_number"
+                            value="{{ old('phone_number') }}">
                     </div>
                 </div>
                 <div class="col-md-8 offset-2 d-flex justify-content-center">
