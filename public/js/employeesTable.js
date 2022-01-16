@@ -66,4 +66,25 @@ $(document).ready( function () {
         $('input[name="main-checkbox-employees"]').prop('checked', false);
         $('button#btn-multiple-delete-customers').addClass('d-none');
     });
+
+    //AUTOCOMPLETE FIELD
+
+    path = window.location.href.split('employees')[0];
+
+    let company_name;
+    $( "#company_name" ).autocomplete({
+        source: path + "companies/get-company-names",
+        minLength: 0,
+        select: function( event, ui ) {
+            company_name = ui.item.value;
+            $( "#company_name" ).value = company_name;
+        }
+    }).focus(function () {
+        $(this).autocomplete('search', "")
+    });
+
+
+
+
 } );
+

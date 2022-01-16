@@ -59,6 +59,7 @@
                             class="form-control"
                             type="text"
                             name="company_name"
+                            id="company_name"
                             value="{{ old('company_name') }}">
                     </div>
                     <div class="form-group">

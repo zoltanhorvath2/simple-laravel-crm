@@ -28,6 +28,6 @@ class EmployeesController extends Controller
     }
 
     public function createEmployee(Request $request){
-        dd($request->all());
+
     }
 }

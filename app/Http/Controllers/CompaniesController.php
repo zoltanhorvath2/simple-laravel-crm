@@ -65,4 +65,23 @@ class CompaniesController extends Controller
         }
     }
 
+    public function getCompanyNames(Request $request){
+
+        $results = Company::select('id','company_name')
+            ->where('company_name', 'LIKE', "%$request->term%")->get();
+
+        foreach ($results as $result){
+            $result->value = $result->id . ' - ' . $result->company_name;
+            $result->label = $result->id . ' - ' . $result->company_name;
+            unset($result->name);
+            unset($result->id);
+        }
+
+        if(!$results){
+            return response()->json(['response' =>'Nincs találat.']);
+        }else{
+            return response()->json($results);
+        }
+    }
+
 }
