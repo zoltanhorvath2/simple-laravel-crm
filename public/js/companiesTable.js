@@ -23,7 +23,7 @@ $(document).ready( function () {
                 "data": null,
                 "defaultContent":
                     "<div class='centered-button-container'>" +
-                    "<button class='btn btn-primary btn-companies-edit mr-1'><i class='far fa-eye'></i></button>" +
+                    "<button class='btn btn-primary btn-companies-edit mr-1'><i class=\"fas fa-pencil-alt\"></i></button>" +
                     "<button class='btn btn-danger btn-companies-delete'><i class='far fa-trash-alt'></i></button>" +
                     "</div>",
                 'orderable' : false,
@@ -95,5 +95,21 @@ $(document).ready( function () {
         let companyData = companiesTable.row( $(this).parents('tr') ).data();
         window.location.href = path + `companies/edit/${companyData.id}`;
     })
+
+    //Delete company logo
+    $(document).on('click', '#logo-delete', function (e) {
+        e.preventDefault();
+        let url = path + 'companies/delete-logo';
+        let companyID = $('#company_id').val();
+        $.post(url, {id:companyID}, function (data){
+            if(data.code === 1){
+                $('#logo-container').remove()
+                toastr.success(data.msg);
+            }else{
+                toastr.error(data.msg);
+            }
+        },  'json');
+    })
+
 
 } );

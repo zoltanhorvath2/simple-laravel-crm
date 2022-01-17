@@ -37,7 +37,7 @@ class MediaController extends Controller
         if(File::exists('assets/logos/' . $fileName)){
             File::delete('assets/logos/' . $fileName);
         }else{
-            return back()->with(['error_message' => 'Hiba! A képek logo törlése sikertelen!']);
+            return back()->with(['error_message' => 'Hiba! A logo törlése sikertelen!']);
         }
     }
 }

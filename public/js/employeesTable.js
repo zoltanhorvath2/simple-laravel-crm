@@ -18,7 +18,7 @@ $(document).ready( function () {
                 "data": null,
                 "defaultContent":
                     "<div class='centered-button-container'>" +
-                    "<button class='btn btn-primary btn-employees-edit mr-1'><i class='far fa-eye'></i></button>" +
+                    "<button class='btn btn-primary btn-employees-edit mr-1'><i class=\"fas fa-pencil-alt\"></i></button>" +
                     "<button class='btn btn-danger btn-employees-delete'><i class='far fa-trash-alt'></i></button>" +
                     "</div>",
                 'orderable' : false,
@@ -103,9 +103,9 @@ $(document).ready( function () {
 
     //Editing row data
 
-    $('#users-table').on('click', '.btn-edit', function (){
-        var userData = usersTable.row( $(this).parents('tr') ).data();
-        window.location.href=`users/edit/${userData.id}`;
+    $('#employees_table').on('click', '.btn-employees-edit', function (){
+        let employeeData = employeesTable.row( $(this).parents('tr') ).data();
+        window.location.href = path + `employees/edit/${employeeData.id}`;
     })
 
 
