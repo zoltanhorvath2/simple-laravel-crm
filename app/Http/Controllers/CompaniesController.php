@@ -27,7 +27,7 @@ class CompaniesController extends Controller
         return $dataTables->of($companies)->toJson();
     }
 
-    public function newCompany(){
+    public function new(){
         return view('companies.newCompany');
     }
 
@@ -78,8 +78,8 @@ class CompaniesController extends Controller
             unset($result->id);
         }
 
-        if(!$results){
-            return response()->json(['response' =>'Nincs találat.']);
+        if($results->isEmpty()){
+            return response()->json(['label' =>'Nincs találat. Kérjük vegyen fel cégadatokat!']);
         }else{
             return response()->json($results);
         }

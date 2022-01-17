@@ -47,15 +47,15 @@ to get the desired effect
                     <li class="nav-item has-treeview menu-open">
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('employees.list') }}" class="nav-link">
-                                    <i class="fas fa-users"></i>
-                                    <p>Alkalmazottak</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{ route('companies.list') }}" class="nav-link">
                                     <i class="fas fa-business-time"></i>
                                     <p>Cégek</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('employees.list') }}" class="nav-link">
+                                    <i class="fas fa-users"></i>
+                                    <p>Alkalmazottak</p>
                                 </a>
                             </li>
                             <li class="nav-item">
