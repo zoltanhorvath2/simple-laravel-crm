@@ -101,6 +101,13 @@ $(document).ready( function () {
 
     })
 
+    //Editing row data
+
+    $('#users-table').on('click', '.btn-edit', function (){
+        var userData = usersTable.row( $(this).parents('tr') ).data();
+        window.location.href=`users/edit/${userData.id}`;
+    })
+
 
 
 

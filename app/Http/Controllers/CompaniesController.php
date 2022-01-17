@@ -96,4 +96,19 @@ class CompaniesController extends Controller
         }
     }
 
+    public function edit($id){
+        $company = Company::find($id);
+
+        $pageData = [
+            'id'           => $company->id,
+            'company_name' => $company->company_name,
+            'email'        => $company->email,
+            'logo_url'     => $company->logo_url,
+            'logo_name'    => $company->logo_name,
+            'website_url'  => $company->website_url
+        ];
+
+        dd($pageData);
+    }
+
 }

@@ -59,9 +59,9 @@ $(document).ready( function () {
     //Deletion for companies table rows
 
     $('#companies_table').on('click', '.btn-companies-delete', function (){
-        var companyData = companiesTable.row( $(this).parents('tr') ).data();
+        let companyData = companiesTable.row( $(this).parents('tr') ).data();
 
-        var url = path + 'companies/delete';
+        let url = path + 'companies/delete';
 
         swal.fire({
             title: 'Biztosan törölni akarja ezt a céget és a hozzá tartozó alkalmazottakat?',
@@ -87,6 +87,13 @@ $(document).ready( function () {
             }
         })
 
+    })
+
+    //Editing row data
+
+    $('#companies_table').on('click', '.btn-companies-edit', function (){
+        let companyData = companiesTable.row( $(this).parents('tr') ).data();
+        window.location.href = path + `companies/edit/${companyData.id}`;
     })
 
 } );
