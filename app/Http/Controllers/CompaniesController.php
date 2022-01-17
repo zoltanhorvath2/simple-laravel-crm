@@ -21,7 +21,7 @@ class CompaniesController extends Controller
     }
 
 
-    public function getCompanies(DataTables $dataTables){
+    public function get(DataTables $dataTables){
         $companies = Company::all();
 
         return $dataTables->of($companies)->toJson();
@@ -31,7 +31,7 @@ class CompaniesController extends Controller
         return view('companies.newCompany');
     }
 
-    public function createCompany(Request $request){
+    public function create(Request $request){
 
         $validated = $request->validate([
             'company_name' => 'required|min:2|max:200',
@@ -94,6 +94,75 @@ class CompaniesController extends Controller
         }else{
             return response()->json(['code' => 1, 'msg' => 'A cég törölve!']);
         }
+    }
+
+    public function edit($id){
+        $company = Company::find($id);
+
+        $pageData = [
+            'id'           => $company->id,
+            'company_name' => $company->company_name,
+            'email'        => $company->email,
+            'logo_url'     => $company->logo_url,
+            'logo_name'    => $company->logo_name,
+            'website_url'  => $company->website_url
+        ];
+
+        return view('companies/editCompany')->with($pageData);
+    }
+
+    public function update(Request $request){
+        $validated = [
+            'company_name' => 'required|min:2|max:200',
+            'email' => 'nullable|email',
+            'website_url' => 'nullable|min:2|max:200',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:5048'
+        ];
+
+        $company = Company::find($request->id);
+
+        if($request->hasFile('logo')){
+            $this->media->logoProcessor($request);
+            $logoURL = asset('assets/logos') . '/' . $this->media->newLogoName;
+            $logoName = $this->media->newLogoName;
+            $this->media->logoDeleter($request->id);
+        }else{
+            $logoURL = $company->logo_url;
+            $logoName = $company->logo_name;
+        }
+
+        $update = Company::find($request->id)
+            ->update([
+                "company_name" => $request->company_name,
+                "email"        => $request->email,
+                "logo_url"     => $logoURL,
+                "logo_name"    => $logoName
+            ]);
+
+        //Reinitialize newLogoName property
+        $this->media->newLogoName = '';
+
+        if(!$update){
+            return back()->with(['error_message' => 'Hiba! A céginformciók frissítése sikertelen!']);
+        }else{
+            return back()->with(['success_message' => 'A céginformciók frissítése sikeres volt.']);
+        }
+
+    }
+
+    public function deleteLogo(Request $request){
+        $this->media->logoDeleter($request->id);
+        $deletion = Company::find($request->id)->update([
+            "logo_url"  => NULL,
+            "logo_name" => NULL
+        ]);
+
+        if(!$deletion){
+            return response()->json(['code' => 0, 'msg' => 'A logo törlése sikertelen!']);
+        }else{
+            return response()->json(['code' => 1, 'msg' => 'A logo törölve!']);
+        }
+
     }
 
 }

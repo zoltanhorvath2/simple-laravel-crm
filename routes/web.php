@@ -34,12 +34,15 @@ Route::group(['middleware' => ['auth_check']], function (){
     Route::prefix('employees')->group(function(){
         Route::get('/list', [EmployeesController::class, 'list'])
             ->name('employees.list');
-        Route::get('/get-employees', [EmployeesController::class, 'getEmployees']);
-        Route::get('/new', [EmployeesController::class, 'newEmployee'])
+        Route::get('/get-employees', [EmployeesController::class, 'get']);
+        Route::get('/new', [EmployeesController::class, 'new'])
             ->name('new-employee');
-        Route::post('/add', [EmployeesController::class, 'createEmployee'])
+        Route::post('/add', [EmployeesController::class, 'create'])
             ->name('create-employee');
         Route::post('/delete', [EmployeesController::class, 'delete']);
+        Route::get('/edit/{id}', [EmployeesController::class, 'edit']);
+        Route::post('/update', [EmployeesController::class, 'update'])
+            ->name('update-employee');
     });
 
     //Company routes
@@ -47,13 +50,17 @@ Route::group(['middleware' => ['auth_check']], function (){
     Route::prefix('companies')->group(function(){
         Route::get('/list', [CompaniesController::class, 'list'])
             ->name('companies.list');
-        Route::get('/get-companies', [CompaniesController::class, 'getCompanies']);
-        Route::get('/new', [CompaniesController::class, 'newCompany'])
+        Route::get('/get-companies', [CompaniesController::class, 'get']);
+        Route::get('/new', [CompaniesController::class, 'new'])
             ->name('new-company');
-        Route::post('/add', [CompaniesController::class, 'createCompany'])
+        Route::post('/add', [CompaniesController::class, 'create'])
             ->name('create-company');
         Route::get('/get-company-names', [CompaniesController::class, 'getCompanyNames']);
         Route::post('/delete', [CompaniesController::class, 'delete']);
+        Route::get('/edit/{id}', [CompaniesController::class, 'edit']);
+        Route::post('/update', [CompaniesController::class, 'update'])
+            ->name('update-company');
+        Route::post('/delete-logo', [CompaniesController::class, 'deleteLogo']);
     });
 
 });

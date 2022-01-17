@@ -5,3 +5,10 @@
   height: 1px;
   background: #eee;
 }
+
+.logo-image {
+  width: 150px;
+  height: 150px;
+  border: solid 1px grey;
+  padding: 5px 5px;
+}
